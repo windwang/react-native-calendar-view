@@ -23,7 +23,7 @@ class ReactMaterialCalendarView extends Component {
   }
 
   render() {
-    var { style, ...rest } = this.props,
+    var { style,hideHeader, ...rest } = this.props,
       width = rest.width,
       height = rest.height ? rest.height : rest.topbarVisible ? width / 7 * 8 : width;
 
@@ -37,6 +37,7 @@ class ReactMaterialCalendarView extends Component {
       <RCTMaterialCalendarView
         {...rest}
         style={style}
+        topbarVisible={!hideHeader}
         onDateChange={this._onDateChange}
         onMonthChange={this._onMonthChange} />
     );
@@ -107,8 +108,8 @@ ReactMaterialCalendarView.propTypes = {
   tileWidth: PropTypes.number,
   tileHeight: PropTypes.number,
   tileSize: PropTypes.number,
-  // Toolbar options
-  topbarVisible: PropTypes.bool,
+  // Toolbar options 
+  hideHeader:PropTypes.bool,
   arrowColor: ColorValidator,
   // Calendar config
   firstDayOfWeek: PropTypes.oneOf(FIRST_DAY_OF_WEEK),
@@ -129,7 +130,7 @@ ReactMaterialCalendarView.propTypes = {
 };
 
 ReactMaterialCalendarView.defaultProps = {
-  topbarVisible: true,
+  hideHeader: false,
   width: Dimensions.get('window').width,
   firstDayOfWeek:"sunday"
 };

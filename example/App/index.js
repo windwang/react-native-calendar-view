@@ -33,8 +33,7 @@ export default class App extends Component {
             paddingTop:20,
             alignSelf: 'center'
         }}>
-           <Calendar
-            
+           <Calendar            
             height={280}
             tileHeight={35}
             hideHeader={false}
@@ -42,12 +41,6 @@ export default class App extends Component {
             selectedDates={this.state.dates}
             dateBounds={[this.state.min, this.state.max]}
             fillDefaultColorDates={this.state.fillDefaultColorDates}
-        
-            topbarVisible={true}
-            datesSelection={'single'}         
-            showOtherDates="none"
-           
-            eventsColor="#9C27B0"
             onSelectDate={date => {
             console.log(date);
         }}
