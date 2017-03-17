@@ -5,9 +5,12 @@ import android.graphics.Color;
 
 import com.facebook.react.bridge.JSApplicationIllegalArgumentException;
 import com.facebook.react.bridge.ReadableArray;
+import com.facebook.react.bridge.ReadableMap;
+import com.facebook.react.bridge.ReadableMapKeySetIterator;
 import com.facebook.react.uimanager.SimpleViewManager;
 import com.facebook.react.uimanager.ThemedReactContext;
 import com.facebook.react.uimanager.annotations.ReactProp;
+import com.nucllear.rn_materialcalendarview.decorators.ColorDayDecorator;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 
@@ -25,9 +28,9 @@ import static com.nucllear.rn_materialcalendarview.Utils.getDayOfWeekFromString;
 public class ReactMaterialCalendarViewManager extends SimpleViewManager<ReactMaterialCalendarView> {
 
     private static final String REACT_CLASS = "RCTMaterialCalendarView";
-    private static final String DATE_FORMAT = "yyyy/MM/dd";
+    private static final String DATE_FORMAT = "yyyy-MM-dd";
     private static final String COLOR_REGEX = "^#([0-9A-Fa-f]{6}|[0-9A-Fa-f]{8})$";
-    private static final String DATE_REGEX = "^(19|20)\\d\\d[/](0[1-9]|1[012])[/](0[1-9]|[12][0-9]|3[01])";
+    private static final String DATE_REGEX = "^(19|20)\\d\\d[-](0[1-9]|1[012])[-](0[1-9]|[12][0-9]|3[01])";
 
     @SuppressLint("SimpleDateFormat")
     private static final DateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
@@ -189,7 +192,7 @@ public class ReactMaterialCalendarViewManager extends SimpleViewManager<ReactMat
         ArrayList<Date> selectedDates = new ArrayList<Date>();
         for (int i = 0; i < dates.size(); i++) {
             String type = dates.getType(i).name();
-            if("String".equals(type) && dates.getString(i).matches(DATE_REGEX)){
+            if ("String".equals(type) && dates.getString(i).matches(DATE_REGEX)) {
                 Date date = dateFormat.parse(dates.getString(i));
                 selectedDates.add(date);
             } else {
@@ -206,7 +209,7 @@ public class ReactMaterialCalendarViewManager extends SimpleViewManager<ReactMat
         ArrayList<CalendarDay> decorated = new ArrayList<CalendarDay>();
         for (int i = 0; i < dates.size(); i++) {
             String type = dates.getType(i).name();
-            if("String".equals(type) && dates.getString(i).matches(DATE_REGEX)){
+            if ("String".equals(type) && dates.getString(i).matches(DATE_REGEX)) {
                 Date date = dateFormat.parse(dates.getString(i));
                 decorated.add(CalendarDay.from(date));
             } else {
@@ -218,6 +221,21 @@ public class ReactMaterialCalendarViewManager extends SimpleViewManager<ReactMat
         }
     }
 
+    @ReactProp(name = "fillDefaultColorDates")
+    public void setFillDefaultColorDates(ReactMaterialCalendarView view, ReadableMap dates) throws ParseException {
+        if (dates == null) return;
+
+        List<ColorDayDecorator> decorators = new ArrayList<>();
+        ReadableMapKeySetIterator iterator = dates.keySetIterator();
+        while (iterator.hasNextKey()) {
+            String key = iterator.nextKey();
+            Date date = dateFormat.parse(key);
+            decorators.add(new ColorDayDecorator(view.getContext(), CalendarDay.from(date), Color.parseColor(dates.getString(key))));
+
+        }
+        if (decorators.size() > 0)
+            view.addDecorators(decorators);
+    }
 
 
     // Color customizations
@@ -228,6 +246,7 @@ public class ReactMaterialCalendarViewManager extends SimpleViewManager<ReactMat
             if (color.matches(COLOR_REGEX)) {
                 view.setSelectionColor(Color.parseColor(color));
                 view.setTodayColor(color);
+
             } else {
                 throw new JSApplicationIllegalArgumentException("Invalid selectionColor property: " + color);
             }

@@ -1,9 +1,9 @@
 import React, { Component, PropTypes } from 'react';
-import { requireNativeComponent, View } from 'react-native';
+import { Dimensions, requireNativeComponent, View } from 'react-native';
 
-var RCTMaterialCalendarView = requireNativeComponent('RCTCalendarView', ReactCalendarView);
+var RCTMaterialCalendarView = requireNativeComponent('RCTMaterialCalendarView', ReactMaterialCalendarView);
 
-class ReactCalendarView extends Component {
+class ReactMaterialCalendarView extends Component {
   constructor() {
     super();
     this._onDateChange = this._onDateChange.bind(this);
@@ -34,7 +34,7 @@ class ReactCalendarView extends Component {
     };
 
     return (
-      <RCTCalendarView
+      <RCTMaterialCalendarView
         {...rest}
         style={style}
         onDateChange={this._onDateChange}
@@ -99,7 +99,7 @@ const DatesValidator = function (props, propName, componentName, ...rest) {
   return PropTypes.string(props, propName, componentName, ...rest) || checker();
 };
 
-ReactCalendarView.propTypes = {
+ReactMaterialCalendarView.propTypes = {
   ...View.propTypes,
   width: PropTypes.number.isRequired,
   height: PropTypes.number,
@@ -124,10 +124,14 @@ ReactCalendarView.propTypes = {
   selectionColor: ColorValidator,
   weekendsColor: ColorValidator,
   eventsColor: ColorValidator,
+ //custom day color
+  fillDefaultColorDates:PropTypes.object
 };
 
-ReactCalendarView.defaultProps = {
-  topbarVisible: true
+ReactMaterialCalendarView.defaultProps = {
+  topbarVisible: true,
+  width: Dimensions.get('window').width,
+  firstDayOfWeek:"sunday"
 };
 
-export default ReactCalendarView;
+export default ReactMaterialCalendarView;

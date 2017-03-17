@@ -44,8 +44,7 @@ export default class App extends Component {
             fillDefaultColorDates={this.state.fillDefaultColorDates}
         
             topbarVisible={true}
-            datesSelection={'single'}
-            firstDayOfWeek="monday"
+            datesSelection={'single'}         
             showOtherDates="none"
            
             eventsColor="#9C27B0"

@@ -11,7 +11,7 @@ import {
   Text,
   View
 } from 'react-native';
-import App from 'app';
+import App from './App';
 
 export default class example extends Component {
   render() {
