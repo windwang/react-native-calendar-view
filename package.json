@@ -1,0 +1,23 @@
+{
+  "name": "react-native-calendar-view",
+  "version": "1.0.0",
+  "description": "A calendar view for react native android and ios",
+  "main": "index",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/windwang/react-native-calendar-view.git"
+  },
+  "keywords": [
+    "react-component",
+    "react-native",
+    "android",
+    "ios",
+    "calendar"
+  ],
+  "author": "windwang <windwang@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/windwang/react-native-calendar-view/issues"
+  },
+  "homepage": "https://github.com/windwang/react-native-calendar-view"
+}

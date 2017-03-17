@@ -1,0 +1,9 @@
+rootProject.name = 'example'
+include ':react-native-calendar-view'
+project(':react-native-calendar-view').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-calendar-view/android')
+
+include ':app'
+include ':react-native-calendar-view'
+
+project(':react-native-calendar-view').projectDir = new File(rootProject.projectDir,
+  '../node_modules/react-native-calendar-view/android')
