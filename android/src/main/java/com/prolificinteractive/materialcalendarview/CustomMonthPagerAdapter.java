@@ -11,4 +11,9 @@ public class CustomMonthPagerAdapter extends MonthPagerAdapter {
     CustomMonthPagerAdapter(MaterialCalendarView mcv) {
         super(mcv);
     }
+
+    @Override
+    protected MonthView createView(int position) {
+        return new CustomMonthView(mcv, getItem(position), mcv.getFirstDayOfWeek());
+    }
 }
