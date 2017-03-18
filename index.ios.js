@@ -46,7 +46,7 @@ export default class FSCalendar extends Component {
     scopeMode: React.PropTypes.oneOf(['month', 'week']),
 
     // 回调函数
-    onSelectDate: React.PropTypes.func,
+    onDateChange: React.PropTypes.func,
     onDeselectDate: React.PropTypes.func,
     onMonthChange: React.PropTypes.func,
 
@@ -105,7 +105,7 @@ export default class FSCalendar extends Component {
     convertProps(this._props)
   }
   _onSelectDate(ev) {
-    this.props.onSelectDate && this.props.onSelectDate(new Date(ev.nativeEvent.date))
+    this.props.onDateChange && this.props.onDateChange(new Date(ev.nativeEvent.date))
   }
   _onDeselectDate(ev) {
     this.props.onDeselectDate && this.props.onDeselectDate(new Date(ev.nativeEvent.date))
@@ -115,7 +115,7 @@ export default class FSCalendar extends Component {
   }
 
   render() {
-    const { onSelectDate, onDeselectDate, onMonthChange, ...nativeProps } = this._props;
+    const { onDateChange, onDeselectDate, onMonthChange, ...nativeProps } = this._props;
     return (
       <RNFSCalendar onSelectDate={(ev) => this._onSelectDate(ev)}
         onDeselectDate={(ev) => this._onDeselectDate(ev)}
