@@ -26,6 +26,9 @@ public class ReactMaterialCalendarView extends MaterialCalendarView implements O
     private EventDecorator events;
     private TodayDecorator today;
 
+    @SuppressLint("SimpleDateFormat")
+    SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+
     public ReactMaterialCalendarView(Context context) {
         super(context);
         setLayoutParams(new ViewGroup.LayoutParams(
@@ -64,7 +67,7 @@ public class ReactMaterialCalendarView extends MaterialCalendarView implements O
 
     @Override
     public void onDateSelected(@NonNull MaterialCalendarView widget, @NonNull CalendarDay date, boolean selected) {
-        @SuppressLint("SimpleDateFormat") SimpleDateFormat df = new SimpleDateFormat("yyyy/MM/dd");
+
         Calendar calendar = date.getCalendar();
         WritableMap event = Arguments.createMap();
         event.putString("date", df.format(calendar.getTime()));
@@ -82,7 +85,7 @@ public class ReactMaterialCalendarView extends MaterialCalendarView implements O
     @Override
     public void onMonthChanged(MaterialCalendarView widget, CalendarDay date) {
         WritableMap event = Arguments.createMap();
-        event.putInt("month", date.getMonth());
+        event.putString("date", df.format(date.getCalendar().getTime()));
         ReactContext reactContext = (ReactContext) getContext();
         reactContext
                 .getJSModule(RCTEventEmitter.class)

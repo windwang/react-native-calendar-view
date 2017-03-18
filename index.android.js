@@ -11,14 +11,16 @@ class ReactMaterialCalendarView extends Component {
   }
 
   _onDateChange(event) {
-    if (this.props.onDateChange) {
-      this.props.onDateChange && this.props.onDateChange(event.nativeEvent);
+    if (event.nativeEvent.selected&& this.props.onSelectDate) {
+      this.props.onSelectDate && this.props.onSelectDate(event.nativeEvent.date);
+    }else  if(!event.nativeEvent.selected&&this.props.onDeselectDate){
+        this.props.onDeselectDate && this.props.onDeselectDate(event.nativeEvent.date);
     }
   }
 
   _onMonthChange(event) {
     if (this.props.onMonthChange) {
-      this.props.onMonthChange && this.props.onMonthChange(event.nativeEvent);
+      this.props.onMonthChange && this.props.onMonthChange(event.nativeEvent.date);
     }
   }
 

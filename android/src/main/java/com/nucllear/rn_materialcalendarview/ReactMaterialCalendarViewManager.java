@@ -12,6 +12,7 @@ import com.facebook.react.uimanager.ThemedReactContext;
 import com.facebook.react.uimanager.annotations.ReactProp;
 import com.nucllear.rn_materialcalendarview.decorators.ColorDayDecorator;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
+import com.prolificinteractive.materialcalendarview.DayViewDecorator;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 
 import java.text.DateFormat;
@@ -32,8 +33,13 @@ public class ReactMaterialCalendarViewManager extends SimpleViewManager<ReactMat
     private static final String COLOR_REGEX = "^#([0-9A-Fa-f]{6}|[0-9A-Fa-f]{8})$";
     private static final String DATE_REGEX = "^(19|20)\\d\\d[-](0[1-9]|1[012])[-](0[1-9]|[12][0-9]|3[01])";
 
+
     @SuppressLint("SimpleDateFormat")
     private static final DateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
+
+
+    Map<CalendarDay, ColorDayDecorator> fillDefaultColorDates = new HashMap<>();
+
 
     @Override
     public String getName() {
@@ -224,17 +230,35 @@ public class ReactMaterialCalendarViewManager extends SimpleViewManager<ReactMat
     @ReactProp(name = "fillDefaultColorDates")
     public void setFillDefaultColorDates(ReactMaterialCalendarView view, ReadableMap dates) throws ParseException {
         if (dates == null) return;
-
         List<ColorDayDecorator> decorators = new ArrayList<>();
+        Map<CalendarDay, ColorDayDecorator> oldFillDefaultColorDates = fillDefaultColorDates;
+        fillDefaultColorDates = new HashMap<>();
+
         ReadableMapKeySetIterator iterator = dates.keySetIterator();
+
         while (iterator.hasNextKey()) {
             String key = iterator.nextKey();
             Date date = dateFormat.parse(key);
-            decorators.add(new ColorDayDecorator(view.getContext(), CalendarDay.from(date), Color.parseColor(dates.getString(key))));
+            int color = Color.parseColor(dates.getString(key));
+            CalendarDay calendarDay = CalendarDay.from(date);
+            ColorDayDecorator colorDayDecorator = oldFillDefaultColorDates.get(calendarDay);
+            if (colorDayDecorator != null) {
+                colorDayDecorator.setColor(color);
+                oldFillDefaultColorDates.remove(calendarDay);
+            } else {
+                colorDayDecorator = new ColorDayDecorator(view.getContext(), calendarDay, color);
+                decorators.add(colorDayDecorator);
+            }
+            fillDefaultColorDates.put(calendarDay, colorDayDecorator);
 
         }
-        if (decorators.size() > 0)
+        for (Map.Entry<CalendarDay, ColorDayDecorator> item :
+                oldFillDefaultColorDates.entrySet()) {
+            view.removeDecorator(item.getValue());
+        }
+        if (decorators.size() > 0) {
             view.addDecorators(decorators);
+        }
     }
 
 
