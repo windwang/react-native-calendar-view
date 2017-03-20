@@ -1,6 +1,7 @@
 package com.nucllear.rn_materialcalendarview.decorators;
 
 import android.graphics.Color;
+import android.view.View;
 
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.DayViewDecorator;

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
+import android.view.View;
 
 import com.nucllear.rn_materialcalendarview.R;
 import com.prolificinteractive.materialcalendarview.CalendarDay;

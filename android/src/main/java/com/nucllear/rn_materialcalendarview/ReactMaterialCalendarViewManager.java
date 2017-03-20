@@ -229,7 +229,8 @@ public class ReactMaterialCalendarViewManager extends SimpleViewManager<ReactMat
 
     @ReactProp(name = "fillDefaultColorDates")
     public void setFillDefaultColorDates(ReactMaterialCalendarView view, ReadableMap dates) throws ParseException {
-        if (dates == null) return;
+        if (dates == null)
+            return;
         List<ColorDayDecorator> decorators = new ArrayList<>();
         Map<CalendarDay, ColorDayDecorator> oldFillDefaultColorDates = fillDefaultColorDates;
         fillDefaultColorDates = new HashMap<>();
@@ -239,14 +240,18 @@ public class ReactMaterialCalendarViewManager extends SimpleViewManager<ReactMat
         while (iterator.hasNextKey()) {
             String key = iterator.nextKey();
             Date date = dateFormat.parse(key);
-            int color = Color.parseColor(dates.getString(key));
+            ReadableMap map=dates.getMap(key);
+
+            int color = Color.parseColor(map.getString("color"));
+            String text=map.getString("text");
+            int textColor= Color.parseColor(map.getString("textColor"));
             CalendarDay calendarDay = CalendarDay.from(date);
             ColorDayDecorator colorDayDecorator = oldFillDefaultColorDates.get(calendarDay);
             if (colorDayDecorator != null) {
                 colorDayDecorator.setColor(color);
                 oldFillDefaultColorDates.remove(calendarDay);
             } else {
-                colorDayDecorator = new ColorDayDecorator(view.getContext(), calendarDay, color);
+                colorDayDecorator = new ColorDayDecorator(view.getContext(), calendarDay,text,textColor, color);
                 decorators.add(colorDayDecorator);
             }
             fillDefaultColorDates.put(calendarDay, colorDayDecorator);

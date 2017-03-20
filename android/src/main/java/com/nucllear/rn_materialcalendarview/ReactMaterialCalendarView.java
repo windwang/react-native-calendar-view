@@ -6,6 +6,7 @@ import android.content.Context;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.view.ViewGroup;
 
@@ -14,6 +15,7 @@ import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.uimanager.events.RCTEventEmitter;
 import com.nucllear.rn_materialcalendarview.decorators.EventDecorator;
+import com.nucllear.rn_materialcalendarview.decorators.SelectedDayDecorator;
 import com.nucllear.rn_materialcalendarview.decorators.TodayDecorator;
 import com.nucllear.rn_materialcalendarview.decorators.WeekEndsDecorator;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
@@ -39,11 +41,11 @@ public class ReactMaterialCalendarView extends MaterialCalendarView implements O
         this.setOnDateChangedListener(this);
         this.setOnMonthChangedListener(this);
 
-        weekEnds = new WeekEndsDecorator();
+        //   weekEnds = new WeekEndsDecorator();
         events = new EventDecorator();
         today = new TodayDecorator(context, this.getSelectionColor());
 
-        this.addDecorators(today, weekEnds, events);
+        this.addDecorators(today, events,new SelectedDayDecorator(this.getSelectionColor()));
     }
 
     public EventDecorator getEvents() {
