@@ -19,7 +19,8 @@ export default class App extends Component {
                 '2017-03-01': {
                     color: '#00f0f0',
                     text: "休假",
-                    textColor: "#000f0f"
+                    textColor: "#000f0f",
+                    textSize:28
                 },
                 '2017-03-02': {
                     color: '#00f00f',
