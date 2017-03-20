@@ -241,17 +241,13 @@ public class ReactMaterialCalendarViewManager extends SimpleViewManager<ReactMat
             String key = iterator.nextKey();
             Date date = dateFormat.parse(key);
             ReadableMap map=dates.getMap(key);
-
-            int color = Color.parseColor(map.getString("color"));
-            String text=map.getString("text");
-            int textColor= Color.parseColor(map.getString("textColor"));
             CalendarDay calendarDay = CalendarDay.from(date);
             ColorDayDecorator colorDayDecorator = oldFillDefaultColorDates.get(calendarDay);
             if (colorDayDecorator != null) {
-                colorDayDecorator.setColor(color);
+                colorDayDecorator.reset(map);
                 oldFillDefaultColorDates.remove(calendarDay);
             } else {
-                colorDayDecorator = new ColorDayDecorator(view.getContext(), calendarDay,text,textColor, color);
+                colorDayDecorator = new ColorDayDecorator(view.getContext(), calendarDay,map);
                 decorators.add(colorDayDecorator);
             }
             fillDefaultColorDates.put(calendarDay, colorDayDecorator);

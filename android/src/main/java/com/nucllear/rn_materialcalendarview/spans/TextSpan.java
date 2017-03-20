@@ -15,15 +15,19 @@ public class TextSpan implements LineBackgroundSpan {
     private final int color;
     private String text;
 
+    float textSize;
+
     /**
      * Create a span to draw a dot using a specified radius and color
      *
-     * @param text  radius for the dot
-     * @param color color of the dot
+     * @param text     radius for the dot
+     * @param textSize
+     * @param color    color of the dot
      */
-    public TextSpan(String text, int color) {
+    public TextSpan(String text, float textSize, int color) {
         this.text = text;
         this.color = color;
+        this.textSize = textSize;
     }
 
     @Override
@@ -38,14 +42,16 @@ public class TextSpan implements LineBackgroundSpan {
             paint.setColor(color);
 
         }
+        float oldSize= paint.getTextSize();
+        paint.setTextSize(textSize);
         Rect bounds = new Rect();
         paint.getTextBounds(text, 0, text.length(), bounds);
         float width = bounds.width();
         canvas.drawText(text, (left + right - width) / 2, bottom + bounds.height(), paint);
         // canvas.drawCircle((left + right) / 2, bottom + radius, radius, paint);
+
         paint.setColor(oldColor);
-
-
+        paint.setTextSize(oldSize);;
 
     }
 }
