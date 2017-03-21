@@ -29,6 +29,7 @@
 @property (nonatomic, copy) RCTBubblingEventBlock onDeselectDate;
 @property (nonatomic, copy) RCTBubblingEventBlock onCurrentPageChange;
 
+
 // 针对每个单独的日期设置样式
 @property (nonatomic, retain) NSDictionary *fillDefaultColorDates;
 @property (nonatomic, retain) NSDictionary *fillSelectionColorDates;
@@ -36,8 +37,11 @@
 @property (nonatomic, retain) NSDictionary *borderSelectionColorDates;
 @property (nonatomic, retain) NSDictionary *cellShapeDates;
 
+
+
 @property (nonatomic, retain) NSDictionary *titleDefaultColorDates;
 @property (nonatomic, retain) NSDictionary *titleSelectionColorDates;
+@property (nonatomic,retain) NSDictionary  *subtitleForDates;
 @property (nonatomic, retain) NSDictionary *subtitleDefaultColorDates;
 @property (nonatomic, retain) NSDictionary *subtitleSelectionColorDates;
 

@@ -110,6 +110,7 @@ ReactMaterialCalendarView.propTypes = {
   tileWidth: PropTypes.number,
   tileHeight: PropTypes.number,
   tileSize: PropTypes.number,
+  subtitleTextSize:PropTypes.number,
   // Toolbar options 
   hideHeader:PropTypes.bool,
   arrowColor: ColorValidator,

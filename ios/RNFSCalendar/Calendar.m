@@ -8,7 +8,24 @@
 
 #import "Calendar.h"
 
-
+//@implementation UIColor (Hex)
+//
+//- (NSUInteger)colorCode
+//{
+//    float red, green, blue;
+//    if ([self getRed:&red green:&green blue:&blue alpha:NULL])
+//    {
+//        NSUInteger redInt = (NSUInteger)(red * 255 + 0.5);
+//        NSUInteger greenInt = (NSUInteger)(green * 255 + 0.5);
+//        NSUInteger blueInt = (NSUInteger)(blue * 255 + 0.5);
+//        
+//        return (redInt << 16) | (greenInt << 8) | blueInt;
+//    }
+//    
+//    return 0;
+//}
+//
+//@end
 @implementation Calendar
 
 NSDateFormatter *formatter;
@@ -61,6 +78,19 @@ NSDateFormatter *formatter;
         [self setScope:FSCalendarScopeWeek];
     }
 }
+-(void)setCellShape:(NSInteger)cellShape{
+    self.appearance.cellShape=cellShape;
+}
+-(void)setSubtitleTextSize:(CGFloat)size{
+    UIFont *font=    self.appearance.subtitleFont;
+    
+    UIFont *newfont =[font fontWithSize:size];
+    
+    self.appearance.subtitleFont=newfont;
+  
+}
+
+
 
 // 设置事件回调函数
 //- (void) setOnSelectDate:(RCTBubblingEventBlock)onSelectDate;
@@ -139,8 +169,21 @@ CALENDAR_COLOR_SETTER_IMP(setSelectionColor)
 }
 // 设置每个日期上事件显示的圆点个数
 //- (NSInteger)calendar:(FSCalendar *)calendar numberOfEventsForDate:(nonnull NSDate *)date;
-//------------------------------------------------------------------------------
-
+//---------------------------------------------------------Ω---------------------
+/**
+ * Asks the dataSource for a subtitle for the specific date under the day text.
+ */
+- (nullable NSString *)calendar:(FSCalendar *)calendar subtitleForDate:(NSDate *)date{
+    if (_subtitleForDates == nil) {
+        return nil;
+    }
+    if (_subtitleForDates.count == 0) {
+        return  nil;
+    }
+    NSString *key = [formatter stringFromDate:date];
+    NSString *title = [_subtitleForDates objectForKey:key];
+    return title;
+}
 
 //------------------------------------------------------------------------------
 #pragma mark FSCalendarDelegate
@@ -291,6 +334,8 @@ CALENDAR_COLOR_SETTER_IMP(setSelectionColor)
     return FSCalendarCellShapeCircle;
 }
 
+
+
 // 设置日期标题及子标题在正常状态以及选中状态下的颜色
 - (UIColor *)calendar:(FSCalendar *)calendar appearance:(nonnull FSCalendarAppearance *)appearance titleDefaultColorForDate:(nonnull NSDate *)date
 {
@@ -317,8 +362,10 @@ CALENDAR_COLOR_SETTER_IMP(setSelectionColor)
     }
     NSString *key = [formatter stringFromDate:date];
     NSNumber *color = [_subtitleDefaultColorDates objectForKey:key];
-    if (color != nil) {
-        return [RCTConvert UIColor:color];
+
+    if (color != nil) {       
+        return  [RCTConvert UIColor:color];
+      
     }
     return appearance.subtitleDefaultColor;
 }
@@ -354,3 +401,5 @@ CALENDAR_COLOR_SETTER_IMP(setSelectionColor)
 }
 //------------------------------------------------------------------------------
 @end
+
+

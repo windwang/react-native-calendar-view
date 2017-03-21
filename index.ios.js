@@ -3,8 +3,24 @@ import { Dimensions, processColor, requireNativeComponent } from 'react-native'
 import _ from 'lodash'
 
 function convertProps(props) {
+
+
+  if(props.fillDefaultColorDates){
+    const items=props.fillDefaultColorDates;
+    props.fillDefaultColorDates={};
+    props.subtitleDefaultColorDates={};
+    props.subtitleForDates={};
+    _.each(items,(item,key)=>{         
+        //console.log("==processColor",item,processColor(item.color),processColor(item.textColor))
+        props.fillDefaultColorDates[key]= processColor(item.color);
+        props.subtitleDefaultColorDates[key]=item.textColor;
+        props.subtitleForDates[key]=item.text;
+    });
+  }
+
+
   let allKeys = [
-    'fillDefaultColorDates', 'fillSelectionColorDates', 'borderDefaultColorDates',
+    'fillSelectionColorDates', 'borderDefaultColorDates',
     'borderSelectionColorDates', 'titleDefaultColorDates', 'titleSelectionColorDates',
     'subtitleDefaultColorDates', 'subtitleSelectionColorDates'
   ];
@@ -26,6 +42,8 @@ function convertProps(props) {
       }
     })
   }
+
+console.log("===processed",props)
 }
 
 export default class FSCalendar extends Component {
@@ -44,6 +62,8 @@ export default class FSCalendar extends Component {
     today: React.PropTypes.instanceOf(Date),
     dateBounds: React.PropTypes.arrayOf(Date),
     scopeMode: React.PropTypes.oneOf(['month', 'week']),
+    cellShape:React.PropTypes.number,
+    subtitleTextSize:React.PropTypes.number,
 
     // 回调函数
     onSelectDate: React.PropTypes.func,
@@ -55,6 +75,7 @@ export default class FSCalendar extends Component {
     weekdayTextColor: React.PropTypes.string,
     titleDefaultColor: React.PropTypes.string,
     titleSelectionColor: React.PropTypes.string,
+
     subtitleDefaultColor: React.PropTypes.string,
     subtitleSelectionColor: React.PropTypes.string,
     titleWeekendColor: React.PropTypes.string,
@@ -85,6 +106,8 @@ export default class FSCalendar extends Component {
     subtitleDefaultColorDates: React.PropTypes.object,
     subtitleSelectionColorDates: React.PropTypes.object,
 
+    subtitleForDates:React.PropTypes.object,
+
     // 头部样式
     headerMinimumDissolvedAlpha: React.PropTypes.number,
     headerDateFormat: React.PropTypes.string
@@ -97,7 +120,8 @@ export default class FSCalendar extends Component {
     hideWeekDay: false,
     scrollEnabled: true,
     today: null,
-    scopeMode: 'month'
+    scopeMode: 'month',
+    cellShape:1
   }
 
   componentWillReceiveProps(nextProps) {

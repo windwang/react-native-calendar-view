@@ -23,6 +23,9 @@ RCT_EXPORT_VIEW_PROPERTY(scrollEnabled, BOOL);
 RCT_EXPORT_VIEW_PROPERTY(today, NSDate);            // 日历的当前日期
 RCT_EXPORT_VIEW_PROPERTY(dateBounds, NSArray);      // 日历的日期范围
 RCT_EXPORT_VIEW_PROPERTY(scopeMode, NSString);      // 日历显示模式： month | week
+RCT_EXPORT_VIEW_PROPERTY(cellShape,NSInteger);
+
+RCT_EXPORT_VIEW_PROPERTY(subtitleTextSize, CGFloat);
 
 // 回调函数
 RCT_EXPORT_VIEW_PROPERTY(onSelectDate, RCTBubblingEventBlock);
@@ -36,8 +39,13 @@ RCT_EXPORT_VIEW_PROPERTY(borderDefaultColorDates, NSDictionary);
 RCT_EXPORT_VIEW_PROPERTY(borderSelectionColorDates, NSDictionary);
 RCT_EXPORT_VIEW_PROPERTY(cellShapeDates, NSDictionary);
 
+
+
+
 RCT_EXPORT_VIEW_PROPERTY(titleDefaultColorDates, NSDictionary);
 RCT_EXPORT_VIEW_PROPERTY(titleSelectionColorDates, NSDictionary);
+
+RCT_EXPORT_VIEW_PROPERTY(subtitleForDates, NSDictionary);
 RCT_EXPORT_VIEW_PROPERTY(subtitleDefaultColorDates, NSDictionary);
 RCT_EXPORT_VIEW_PROPERTY(subtitleSelectionColorDates, NSDictionary);
 
