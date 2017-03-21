@@ -41,7 +41,7 @@ public class SelectedDayDecorator implements DayViewDecorator {
         float[] outerRadii = {20, 20, 20, 20, 20, 20, 20, 20};//外矩形 左上、右上、右下、左下 圆角半径
         RectF inset = null;       // new RectF(0, 0, 100, 100);//内矩形距外矩形，左上角x,y距离， 右下角x,y距离
         float[] innerRadii = null;// {20, 20, 20, 20, 20, 20, 20, 20};//内矩形 圆角半径
-        RoundSquareShape roundRectShape = new RoundSquareShape(outerRadii, inset, innerRadii);
+        RoundSquareShape roundRectShape = new RoundSquareShape(outerRadii, inset, innerRadii,0);
 
         //   RoundRectShape roundRectShape = new RoundRectShape(outerRadii, null, innerRadii); //无内矩形
 

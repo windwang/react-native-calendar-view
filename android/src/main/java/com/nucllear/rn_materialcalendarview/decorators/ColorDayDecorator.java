@@ -42,6 +42,7 @@ public class ColorDayDecorator implements DayViewDecorator {
 
 
     float textSize = 20;
+    float padding = 4;
 
 
     public ColorDayDecorator(Context context, CalendarDay day, ReadableMap arguments) {
@@ -67,7 +68,7 @@ public class ColorDayDecorator implements DayViewDecorator {
     }
 
     public void reset(ReadableMap arguments) {
-        this.setColor(Color.parseColor(arguments.getString("color")));
+        this.color = Color.parseColor(arguments.getString("color"));
         if (arguments.hasKey("text"))
             this.text = arguments.getString("text");
         else
@@ -78,6 +79,9 @@ public class ColorDayDecorator implements DayViewDecorator {
 
         if (arguments.hasKey("textSize"))
             this.textSize = arguments.getInt("textSize");
+        if (arguments.hasKey("padding"))
+            this.padding = (float) arguments.getDouble("padding");
+        this.resetBackground();
 
     }
 
@@ -89,12 +93,14 @@ public class ColorDayDecorator implements DayViewDecorator {
     public void setColor(int color) {
         if (this.color == color) return;
         this.color = color;
-        resetBackground(color);
+        resetBackground();
     }
 
-    private void resetBackground(int color) {
+    private void resetBackground() {
         float[] outerRadii = {20, 20, 20, 20, 20, 20, 20, 20};//外矩形 左上、右上、右下、左下 圆角半径
-        RoundSquareShape roundRectShape = new RoundSquareShape(outerRadii, null, null);
+        // 内部矩形与外部矩形的距离
+        RectF inset = null;// new RectF(100, 100, 100, 100);
+        RoundSquareShape roundRectShape = new RoundSquareShape(outerRadii, inset, null, this.padding);
         ShapeDrawable shapeDrawable = new ShapeDrawable(roundRectShape);
         shapeDrawable.getPaint().setColor(color);
         drawable = shapeDrawable;

@@ -22,6 +22,7 @@ public class RoundSquareShape extends RectShape {
 
     private RectF mInnerRect;
     private Path mPath;    // this is what we actually draw
+    float padding;
 
     /**
      * RoundRectShape constructor.
@@ -43,7 +44,7 @@ public class RoundSquareShape extends RectShape {
      *                   If inset parameter is null, this parameter is ignored.
      */
     public RoundSquareShape(float[] outerRadii, RectF inset,
-                            float[] innerRadii) {
+                            float[] innerRadii, float padding) {
         if (outerRadii != null && outerRadii.length < 8) {
             throw new ArrayIndexOutOfBoundsException("outer radii must have >= 8 values");
         }
@@ -58,6 +59,7 @@ public class RoundSquareShape extends RectShape {
             mInnerRect = new RectF();
         }
         mPath = new Path();
+        this.padding = padding;
     }
 
     @Override
@@ -92,7 +94,7 @@ public class RoundSquareShape extends RectShape {
     protected void onResize(float width, float height) {
         super.onResize(width, height);
 
-        float w = Math.min(width, height);
+        float w = Math.min(width, height)-this.padding*2;
         float h = w;
 
         RectF r = rect();

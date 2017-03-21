@@ -20,12 +20,14 @@ export default class App extends Component {
                     color: '#00f0f0',
                     text: "休假",
                     textColor: "#000f0f",
-                    textSize:28
+                    textSize:28,
+                     padding:10
                 },
                 '2017-03-02': {
                     color: '#00f00f',
                     text: "浪去了",
-                    textColor: "#0f0f00"
+                    textColor: "#0f0f00",
+                     padding:3
                 }
             }
 
@@ -43,12 +45,14 @@ export default class App extends Component {
                 '2017-03-06': {
                     color: '#00f0f0',
                     text: "休假",
-                    textColor: "#000f0f"
+                    textColor: "#000f0f",
+                    padding:3
                 },
                 '2017-03-07': {
                     color: '#00f00f',
                     text: "浪去了",
-                    textColor: "#0f0f00"
+                    textColor: "#0f0f00",
+                     padding:7
                 }
             }
         })
