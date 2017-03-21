@@ -78,9 +78,9 @@ NSDateFormatter *formatter;
         [self setScope:FSCalendarScopeWeek];
     }
 }
--(void)setCellShape:(NSInteger)cellShape{
-    self.appearance.cellShape=cellShape;
-}
+//-(void)setCellShape:(NSInteger)cellShape{
+//    self.appearance.cellShape=cellShape;
+//}
 -(void)setSubtitleTextSize:(CGFloat)size{
     UIFont *font=    self.appearance.subtitleFont;
     
@@ -88,6 +88,11 @@ NSDateFormatter *formatter;
     
     self.appearance.subtitleFont=newfont;
   
+}
+-(void)setBorderRadius:(float)size{
+    
+    self.appearance.borderRadius=size;
+    
 }
 
 

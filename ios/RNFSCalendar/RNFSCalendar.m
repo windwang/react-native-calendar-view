@@ -23,7 +23,8 @@ RCT_EXPORT_VIEW_PROPERTY(scrollEnabled, BOOL);
 RCT_EXPORT_VIEW_PROPERTY(today, NSDate);            // 日历的当前日期
 RCT_EXPORT_VIEW_PROPERTY(dateBounds, NSArray);      // 日历的日期范围
 RCT_EXPORT_VIEW_PROPERTY(scopeMode, NSString);      // 日历显示模式： month | week
-RCT_EXPORT_VIEW_PROPERTY(cellShape,NSInteger);
+//RCT_EXPORT_VIEW_PROPERTY(cellShape,NSInteger);
+RCT_EXPORT_VIEW_PROPERTY(borderRadius, float);
 
 RCT_EXPORT_VIEW_PROPERTY(subtitleTextSize, CGFloat);
 

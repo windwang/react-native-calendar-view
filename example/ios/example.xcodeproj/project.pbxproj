@@ -229,9 +229,9 @@
 			remoteGlobalIDString = 58B5119B1A9E6C1200147676;
 			remoteInfo = RCTText;
 		};
-		E46C2F651E7A97C3008CF61E /* PBXContainerItemProxy */ = {
+		A214F1FA1E80FF0900346FDF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 3C6B884C20524A7AACD214EB /* RNFSCalendar.xcodeproj */;
+			containerPortal = A214F1F61E80FF0900346FDF /* RNFSCalendar.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 6F6FFE7B1DA757B8005C48DB;
 			remoteInfo = RNFSCalendar;
@@ -260,10 +260,10 @@
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* example-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "example-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* example-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "example-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		3C6B884C20524A7AACD214EB /* RNFSCalendar.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNFSCalendar.xcodeproj; path = "../node_modules/react-native-calendar-view/ios/RNFSCalendar.xcodeproj"; sourceTree = "<group>"; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
+		A214F1F61E80FF0900346FDF /* RNFSCalendar.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNFSCalendar.xcodeproj; path = ../../ios/RNFSCalendar.xcodeproj; sourceTree = "<group>"; };
 		C2035EDA253D4B7EA62B71E7 /* libRNFSCalendar.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNFSCalendar.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -447,6 +447,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				A214F1F61E80FF0900346FDF /* RNFSCalendar.xcodeproj */,
 				5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */,
 				146833FF1AC3E56700842450 /* React.xcodeproj */,
 				00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */,
@@ -458,7 +459,6 @@
 				832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */,
 				00C302DF1ABCB9EE00DB3ED1 /* RCTVibration.xcodeproj */,
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
-				3C6B884C20524A7AACD214EB /* RNFSCalendar.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -495,10 +495,10 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		E46C2F491E7A97C3008CF61E /* Products */ = {
+		A214F1F71E80FF0900346FDF /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E46C2F661E7A97C3008CF61E /* libRNFSCalendar.a */,
+				A214F1FB1E80FF0900346FDF /* libRNFSCalendar.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -662,8 +662,8 @@
 					ProjectRef = 146833FF1AC3E56700842450 /* React.xcodeproj */;
 				},
 				{
-					ProductGroup = E46C2F491E7A97C3008CF61E /* Products */;
-					ProjectRef = 3C6B884C20524A7AACD214EB /* RNFSCalendar.xcodeproj */;
+					ProductGroup = A214F1F71E80FF0900346FDF /* Products */;
+					ProjectRef = A214F1F61E80FF0900346FDF /* RNFSCalendar.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -852,11 +852,11 @@
 			remoteRef = 832341B41AAA6A8300B99B32 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		E46C2F661E7A97C3008CF61E /* libRNFSCalendar.a */ = {
+		A214F1FB1E80FF0900346FDF /* libRNFSCalendar.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libRNFSCalendar.a;
-			remoteRef = E46C2F651E7A97C3008CF61E /* PBXContainerItemProxy */;
+			remoteRef = A214F1FA1E80FF0900346FDF /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */

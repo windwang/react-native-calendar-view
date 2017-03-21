@@ -62,7 +62,8 @@ export default class FSCalendar extends Component {
     today: React.PropTypes.instanceOf(Date),
     dateBounds: React.PropTypes.arrayOf(Date),
     scopeMode: React.PropTypes.oneOf(['month', 'week']),
-    cellShape:React.PropTypes.number,
+    borderRadius:React.PropTypes.number,
+
     subtitleTextSize:React.PropTypes.number,
 
     // 回调函数
@@ -121,7 +122,8 @@ export default class FSCalendar extends Component {
     scrollEnabled: true,
     today: null,
     scopeMode: 'month',
-    cellShape:1
+    borderRadius:0.15
+    
   }
 
   componentWillReceiveProps(nextProps) {
