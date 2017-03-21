@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { Dimensions, requireNativeComponent, View } from 'react-native';
-
+import _ from 'lodash'
 var RCTMaterialCalendarView = requireNativeComponent('RCTMaterialCalendarView', ReactMaterialCalendarView);
 
 class ReactMaterialCalendarView extends Component {
@@ -25,7 +25,7 @@ class ReactMaterialCalendarView extends Component {
   }
 
   render() {
-    var { style,hideHeader, ...rest } = this.props,
+    var { style,hideHeader,fillDefaultColorDates, subtitleTextSize,...rest } = this.props,
       width = rest.width,
       height = rest.height ? rest.height : rest.topbarVisible ? width / 7 * 8 : width;
 
@@ -34,11 +34,19 @@ class ReactMaterialCalendarView extends Component {
       width,
       height
     };
+     
+     if(subtitleTextSize&& fillDefaultColorDates){
+       _.each(fillDefaultColorDates,(value,key)=>{
+          value.textSize=subtitleTextSize;
+       })
+     }
+     console.log("fillDefaultColorDates====",fillDefaultColorDates)
 
     return (
       <RCTMaterialCalendarView
         {...rest}
         style={style}
+        fillDefaultColorDates={fillDefaultColorDates}
         topbarVisible={!hideHeader}
         onDateChange={this._onDateChange}
         onMonthChange={this._onMonthChange} />
