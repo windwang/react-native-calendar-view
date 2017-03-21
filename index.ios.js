@@ -11,7 +11,6 @@ function convertProps(props) {
     props.subtitleDefaultColorDates={};
     props.subtitleForDates={};
     _.each(items,(item,key)=>{         
-        //console.log("==processColor",item,processColor(item.color),processColor(item.textColor))
         props.fillDefaultColorDates[key]= processColor(item.color);
         props.subtitleDefaultColorDates[key]=item.textColor;
         props.subtitleForDates[key]=item.text;
@@ -43,7 +42,6 @@ function convertProps(props) {
     })
   }
 
-console.log("===processed",props)
 }
 
 export default class FSCalendar extends Component {
