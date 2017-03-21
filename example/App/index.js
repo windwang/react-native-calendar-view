@@ -14,20 +14,20 @@ export default class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
+           
             // today:new Date(2015,1,2), min:new Date(2015,1,1), max:new Date(2015,1,28)
             fillDefaultColorDates: {
                 '2017-03-01': {
-                    color: '#00f0f0',
+                    color: '#ff00ff',
                     text: "休假",
-                    textColor: "#000f0f",
-                    textSize:28,
-                     padding:10
+                    textColor: '#00ff00',
+                    padding: 10
                 },
                 '2017-03-02': {
                     color: '#00f00f',
                     text: "浪去了",
-                    textColor: "#0f0f00",
-                     padding:3
+                    textColor: '#0000ff',
+                    padding: 3
                 }
             }
 
@@ -46,13 +46,13 @@ export default class App extends Component {
                     color: '#00f0f0',
                     text: "休假",
                     textColor: "#000f0f",
-                    padding:3
+                    padding: 3
                 },
                 '2017-03-07': {
                     color: '#00f00f',
                     text: "浪去了",
                     textColor: "#0f0f00",
-                     padding:7
+                    padding: 7
                 }
             }
         })
@@ -74,6 +74,7 @@ export default class App extends Component {
                     selectedDates={this.state.dates}
                     dateBounds={[this.state.min, this.state.max]}
                     fillDefaultColorDates={this.state.fillDefaultColorDates}
+                    subtitleTextSize={12}
                     onSelectDate={date => {
                     console.log(date);
                 }}
