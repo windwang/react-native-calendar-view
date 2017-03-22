@@ -28,6 +28,10 @@ RCT_EXPORT_VIEW_PROPERTY(borderRadius, float);
 
 RCT_EXPORT_VIEW_PROPERTY(subtitleTextSize, CGFloat);
 
+RCT_EXPORT_VIEW_PROPERTY(lastUpdate, NSNumber);
+
+
+
 // 回调函数
 RCT_EXPORT_VIEW_PROPERTY(onSelectDate, RCTBubblingEventBlock);
 RCT_EXPORT_VIEW_PROPERTY(onDeselectDate, RCTBubblingEventBlock);

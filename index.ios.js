@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {Dimensions, processColor, requireNativeComponent} from 'react-native'
 import _ from 'lodash'
+import {settingsLoadSuccess} from '../../App/Modules/User/Redux/ContactRedux'
 
 function convertProps(props) {
 
@@ -17,6 +18,10 @@ function convertProps(props) {
         props.subtitleForDates[key] = item.text;
       }
     );
+ 
+    props.lastUpdate=(new Date()).getTime()
+   
+    
   }
 
   let allKeys = [
@@ -48,6 +53,7 @@ function convertProps(props) {
       }
     })
   }
+  console.log("=====RNFSCalendar",props);
 
 }
 
@@ -56,6 +62,10 @@ export default class FSCalendar extends Component {
     super(props)
     this._props = _.assign({}, this.props)
     convertProps(this._props)
+    const dt= new Date();
+     this.props.onMonthChange && this
+      .props
+      .onMonthChange(new Date(dt.getFullYear(),dt.getMonth(),1))
   }
 
   static propTypes = {
@@ -67,6 +77,7 @@ export default class FSCalendar extends Component {
     today: React
       .PropTypes
       .instanceOf(Date),
+    lastUpdate:React.PropTypes.number,
     dateBounds: React
       .PropTypes
       .arrayOf(Date),
@@ -137,7 +148,8 @@ export default class FSCalendar extends Component {
     scrollEnabled: true,
     today: null,
     scopeMode: 'month',
-    borderRadius: 0.15
+    borderRadius: 0.15,
+    lastUpdate:(new Date()).getTime()
 
   }
 

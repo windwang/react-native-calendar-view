@@ -26,10 +26,11 @@
 //}
 //
 //@end
+
 @implementation Calendar
 
 NSDateFormatter *formatter;
-
+long long mlastDate=0;
 - (instancetype)init
 {
     self = [super init];
@@ -93,6 +94,12 @@ NSDateFormatter *formatter;
     
     self.appearance.borderRadius=size;
     
+}
+-(void)setLastUpdate:(NSNumber*)date{
+    if(mlastDate<[date longLongValue]  ){
+        mlastDate=[date longLongValue];
+        [self reloadData];
+    }
 }
 
 
@@ -261,6 +268,7 @@ CALENDAR_COLOR_SETTER_IMP(setSelectionColor)
 // 设置每个选中日期的填充颜色
 - (UIColor *)calendar:(FSCalendar *)calendar appearance:(nonnull FSCalendarAppearance *)appearance fillSelectionColorForDate:(nonnull NSDate *)date
 {
+  
     if (_fillSelectionColorDates == nil) {
         return appearance.selectionColor;
     }
