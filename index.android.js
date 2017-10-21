@@ -1,6 +1,7 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import { Dimensions, requireNativeComponent, View } from 'react-native';
 import _ from 'lodash'
+import PropTypes from 'prop-types'
 var RCTMaterialCalendarView = requireNativeComponent('RCTMaterialCalendarView', ReactMaterialCalendarView);
 
 class ReactMaterialCalendarView extends Component {
