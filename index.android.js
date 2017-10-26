@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component,ViewPropTypes } from 'react';
 import { Dimensions, requireNativeComponent, View } from 'react-native';
 import _ from 'lodash'
 import PropTypes from 'prop-types'
@@ -111,8 +111,8 @@ const DatesValidator = function (props, propName, componentName, ...rest) {
   return PropTypes.string(props, propName, componentName, ...rest) || checker();
 };
 
-ReactMaterialCalendarView.propTypes = {
-  ...View.propTypes,
+ReactMaterialCalendarViewPropTypes = {
+  ...ViewPropTypes,
   width: PropTypes.number.isRequired,
   height: PropTypes.number,
   // Tile size
