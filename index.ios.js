@@ -122,9 +122,7 @@ export default class FSCalendar extends Component {
     fillSelectionColorDates: PropTypes.object,
     borderDefaultColorDates: PropTypes.object,
     borderSelectionColorDates: PropTypes.object,
-    cellShapeDates: React
-      .PropTypes
-      .objectOf(PropTypes.number),
+    cellShapeDates: PropTypes.objectOf(PropTypes.number),
 
     titleDefaultColorDates: PropTypes.object,
     titleSelectionColorDates: PropTypes.object,
