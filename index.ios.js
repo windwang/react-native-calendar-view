@@ -74,15 +74,12 @@ export default class FSCalendar extends Component {
     hideHeader: PropTypes.bool, // 是否隐藏头部
     hideWeekDay: PropTypes.bool, // 是否隐藏顶部的星期
     scrollEnabled: PropTypes.bool,
-    today: React
-      .PropTypes
+    today:PropTypes
       .instanceOf(Date),
     lastUpdate:PropTypes.number,
-    dateBounds: React
-      .PropTypes
+    dateBounds: PropTypes
       .arrayOf(Date),
-    scopeMode: React
-      .PropTypes
+    scopeMode: PropTypes
       .oneOf(['month', 'week']),
     borderRadius: PropTypes.number,
 
